@@ -1,7 +1,7 @@
 class PrimeSieve:
     """ PrimeSieve, class to implement Sieve of Eratosthenes to pick up prime numbers
     :param sievesize: size of the sieve
-    :type sievesize: int
+    :type sievesize: int  
 
     """
     def __init__(self, sievesize):

@@ -1,7 +1,7 @@
 '''
 Created on Nov 18, 2021
 
-@author: pappa
+@author: pappa  
 '''
 import unittest
 from prime.primesieve import PrimeSieve
