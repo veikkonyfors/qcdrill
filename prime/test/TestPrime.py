@@ -4,7 +4,7 @@ Created on Nov 18, 2021
 @author: pappa  
 '''
 import unittest
-from prime.primesieve import PrimeSieve
+from primesieve import PrimeSieve
 
 class TestPrime(unittest.TestCase):
     

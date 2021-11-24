@@ -4,13 +4,10 @@ Created on Nov 10, 2021
 @author: pappa
 '''
 
-#
-# Needs to be on parent directory for blockchain. Otherwise gives blockchain is not a module
-#
 import json
 from flask import Flask #, request
 
-from blockchain.blockchain import BlockChain
+from blockchain import BlockChain
 
 #import requests
  
