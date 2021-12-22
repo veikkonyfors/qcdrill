@@ -9,7 +9,7 @@ from node import Node
 
 class Traveler():
     
-    def __init__(self,cost_matrix,route):
+    def __init__(self,cost_matrix,route): 
         self.cost_matrix=cost_matrix
         self.start_node=None
         self.destination_node=None
