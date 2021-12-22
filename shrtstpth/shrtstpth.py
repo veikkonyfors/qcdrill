@@ -1,27 +1,35 @@
 #
-# shrtstpth, SHoRTeSTPaTH, traverse n lines by 3 columns costsmatrix to find the most cost effective route.
+# shrtstpth, SHoRTeSTPaTH, traverse n lines by 3 columns cost_matrixmatrix to find the most cost effective route.
 #
 # In order to familiarize on techniques to eventually solve Traveling Salesman Problem in Quantum way
 
 import sys
 
-from costline import CostLine
-from costs import Costs 
+from costrow import CostRow
+from costmatrix import CostMatrix
+from traveler import Traveler
 
 print("Find shortest path on a costmatrix\n")
 
-costs=Costs()
+cost_matrix=CostMatrix()
 
-# Read input matrix into Costs object
+# Read input matrix into cost_matrix object
 with open(sys.argv[1], 'r') as infile:
-    for line in infile:
-        costLine=CostLine(line)
-        costs.addLine(costLine)
+    for index, line in enumerate(infile):
+        cost_matrix.add_line(CostRow(index, line))
 
-print(str(costs.getNumLines())+"x"+str(costs.getNumColumns())+"\n")
-print(costs)
+print(str(cost_matrix.get_num_lines())+"x"+str(cost_matrix.get_num_columns())+"\n")
+print(cost_matrix)
 
-# One should find the least expensive route from costs[0][1] to costs[len(2)][len(costs[1])
+traveler=Traveler(cost_matrix)
+start_node=cost_matrix.get_node(0, 1)
+destination_node=cost_matrix.get_node(2, 1)
+
+traveler.travel(start_node, destination_node)
+print(traveler.get_route())
+
+# One should find the least expensive route from costmatrix[0][1] to costmatrix[len(2)][len(costmatrix[1])
 # Traversefrom startto end
 
-#costs.traverse(0,1,1,1) # Not yet implemented
+#costmatrix.traverse(0,1,1,1) # Not yet implemented
+

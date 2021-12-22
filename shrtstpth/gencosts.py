@@ -1,5 +1,5 @@
 """
-Gencosts, generate costs file
+Gencosts, generate costmatrix file
 
 Usage: gencosts.py outputfile lines columns[3]
 
