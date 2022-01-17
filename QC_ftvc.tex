@@ -23,22 +23,25 @@ In this document I am wrapping up the Strangeworks' paced repetition document na
 \[|0\rangle=\begin{bmatrix} 1\\0\end{bmatrix}=e_0,\:
 |1\rangle=\begin{bmatrix} 0\\1\end{bmatrix}=e_1,\:
 \langle0|=\begin{bmatrix} 1&0\end{bmatrix},\:\langle1|=\begin{bmatrix} 0&1\end{bmatrix}\]
-
+\[|\psi\rangle^\dagger=\langle\psi|\]
+\\~\\
 \bf{Matrix addition}
 \[\frac{1+i}{2}|0\rangle + \frac{i}{\sqrt{2}}|1\rangle = \begin{bmatrix} \frac{1+i}{2}\\\frac{i}{\sqrt{2}} \end{bmatrix}\]
-
+\\~\\
 \bf{Unitarity}
 \[U^\dagger U=I,\quad U^\dagger=(U^T)^*,\quad
 \begin{bmatrix}a & b\\c & d\end{bmatrix}^\dagger=\begin{bmatrix}a^* & c^*\\d^* & d^*\end{bmatrix},\:I=\begin{bmatrix}1&0\\0&1\end{bmatrix}\]
 
 \section{Gates}
-\bf{NOT \quad Gate}
+\bf{Pauli gates: X(/NOT), Y and Z}
 \[ NOT|0\rangle = |1\rangle \quad NOT|1\rangle = |0\rangle,\quad NOT (\alpha|0\rangle+\beta|1\rangle)=\alpha|0\rangle+\beta|1\rangle,\quad\]
 \[X =\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix},\:
 \begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}\begin{bmatrix} 1&0\end{bmatrix}=\begin{bmatrix} 0&1\end{bmatrix},\:
 \begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}\begin{bmatrix} 0&1\end{bmatrix}=\begin{bmatrix} 1&0\end{bmatrix}\]
 \[XX|\psi\rangle=\psi\]
-
+\[Y=\begin{bmatrix}0&-i\\i&0\end{bmatrix},\:Y|0\rangle = i|1\rangle,\:Y|1\rangle =-i|0\rangle\]
+\[Z=\begin{bmatrix}1&0\\0&1\end{bmatrix},Z|0\rangle = |0\rangle,Z|1\rangle =-|1\rangle\]
+\\~\\
 \bf{Hadamard \, Gate}
 \[H|0\rangle = \frac{|0\rangle +|1\rangle}{\sqrt 2}, \quad  H|1\rangle = \frac{|0\rangle -|1\rangle}{\sqrt 2}\]
 \[H(\alpha|0\rangle+\beta|1\rangle)=\alpha\left(\frac{|0\rangle+|1\rangle}{\sqrt 2}\right)+\beta\left(\frac{|0\rangle-|1\rangle}{\sqrt 2}\right)
@@ -47,5 +50,7 @@ In this document I am wrapping up the Strangeworks' paced repetition document na
 \[\Rightarrow HH|0\rangle=|0\rangle,\:HH|1\rangle=|1\rangle,\:HH|\psi\rangle=|\psi\rangle\]
 \[\frac{|0\rangle +|1\rangle}{\sqrt 2} \quad\rule[3pt]{1cm}{0.3pt}\fbox{H}\rule[3pt]{1cm}{0.3pt}\fbox{M})=|0\rangle\]
 \[\frac{|0\rangle -|1\rangle}{\sqrt 2} \quad\rule[3pt]{1cm}{0.3pt}\fbox{H}\rule[3pt]{1cm}{0.3pt}\fbox{M})=|1\rangle\]
-
+\\~\\
+\bf{Rotation}
+\[R_y(\theta) =\begin{bmatrix}\cos(\theta/2) & -\sin(\theta/2)\\ \sin(\theta/2) & \cos(\theta/2)\end{bmatrix}\]
 \end{document}
