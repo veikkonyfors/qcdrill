@@ -54,6 +54,22 @@ class TestRoute(unittest.TestCase):
         print(result)
         self.assertEqual(result, '0, 1,  18\n1, 2, 14\n2, 1, 5\n2, 2, 4', 
                          "test_add_if_not_exists_already_add failed")
+
+    def test_remove(self):
+        self.route.remove_node()
+        result = self.route.__str__()
+        print(result)
+        self.assertEqual(result, '0, 1,  18\n1, 2, 14', 
+                         "test_add_if_not_exists_already_noadd failed")
         
+    def test_remove_empty(self):
+        self.route.remove_node()
+        self.route.remove_node()
+        self.route.remove_node()
+        result = self.route.__str__()
+        print(result)
+        self.assertEqual(result, '', 
+                         "test_add_if_not_exists_already_noadd failed")
+
     def tearDown(self):
         pass

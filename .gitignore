@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/QC_ftvc.aux
+/QC_ftvc.out
+/QC_ftvc.synctex.gz
+/QC_ftvc1.aux
+/QC_ftvc1.out
+/QC_ftvc1.pdf
+/QC_ftvc1.synctex.gz
+/tst_latex.aux
+/tst_latex.pdf
+/tst_latex.synctex.gz
+/QC_ftvc_latex.ipynb
+/tst_latex.tex

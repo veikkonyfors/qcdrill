@@ -17,7 +17,8 @@ print(lines, columns)
 with open(sys.argv[1], 'w') as outfile:
     for line in range(lines):
         for col in range(columns):
-            outfile.write(str(random.randint(mincost, maxcost))+separator)
+            outfile.write(str(random.randint(mincost, maxcost)))
+            if col<columns-1: outfile.write(separator)
         outfile.write("\n")
             
         

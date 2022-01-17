@@ -5,6 +5,7 @@ Created on Dec 11, 2021
 '''
 
 from node import Node
+from copy import copy
 
 class Route():
     '''
@@ -20,9 +21,18 @@ class Route():
         
     def add_node(self, node):
         self.nodes.append(node)
+        
+    def remove_node(self):
+        self.nodes.pop()
 
     def get_route(self):
         return self.nodes
+    
+    def copy_route(self):
+        copied_route=Route()
+        for node in self.nodes:
+           copied_route.add_node(node)
+        return copied_route
 
     def get_cost(self):
         cost=0
@@ -38,4 +48,4 @@ class Route():
         if not self.exists_already(node): self.add_node(node)
 
     def __str__(self):
-        return '\n'.join(str(p) for p in self.nodes) 
+        return '\n'.join(p.__str__() for p in self.nodes) 
