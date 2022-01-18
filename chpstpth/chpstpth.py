@@ -3,7 +3,7 @@
 # Each node consists of a cost amount, which is added to the cost of route, if route goes through this node.
 # Traversion can start and end from whichever node. Tested only from a node on first line and ending on the last.
 # A hop from node to node may be taken into any direction, i.e. right, downright, down, downleft, left, upleft, up and upright.
-#
+# Recursive implementation.
 # Just in order to familiarize on a NP-Hard problem, later trying to solve it in Quantum way
 '''
 
@@ -14,7 +14,7 @@ from costmatrix import CostMatrix
 from traveler import Traveler
 from route import Route
 
-print("Find shortest path on a costmatrix\n")
+print("Find cheapest path on a costmatrix\n")
 
 if __name__ == '__main__':
     
