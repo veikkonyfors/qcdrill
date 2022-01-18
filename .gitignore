@@ -139,3 +139,4 @@ dmypy.json
 /tst_latex.synctex.gz
 /QC_ftvc_latex.ipynb
 /tst_latex.tex
+/.pydevproject
