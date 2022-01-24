@@ -1,9 +1,10 @@
-\documentclass[12pt, fleqn]{article}
+\documentclass[11pt, fleqn]{article}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[latin1]{inputenc}
 \usepackage[ddmmyyyy]{datetime}
+\usepackage[braket, qm]{qcircuit}
 \renewcommand{\dateseparator}{.}
 
 
@@ -33,7 +34,7 @@ In this document I am wrapping up the Strangeworks' paced repetition document na
 \begin{bmatrix}a & b\\c & d\end{bmatrix}^\dagger=\begin{bmatrix}a^* & c^*\\d^* & d^*\end{bmatrix},\:I=\begin{bmatrix}1&0\\0&1\end{bmatrix}\]
 
 \section{Gates}
-\bf{Pauli gates: X(/NOT), Y and Z}
+\subsection{Pauli gates: X(/NOT), Y and Z}
 \[ NOT|0\rangle = |1\rangle \quad NOT|1\rangle = |0\rangle,\quad NOT (\alpha|0\rangle+\beta|1\rangle)=\alpha|0\rangle+\beta|1\rangle,\quad\]
 \[X =\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix},\:
 \begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}\begin{bmatrix} 1&0\end{bmatrix}=\begin{bmatrix} 0&1\end{bmatrix},\:
@@ -42,15 +43,43 @@ In this document I am wrapping up the Strangeworks' paced repetition document na
 \[Y=\begin{bmatrix}0&-i\\i&0\end{bmatrix},\:Y|0\rangle = i|1\rangle,\:Y|1\rangle =-i|0\rangle\]
 \[Z=\begin{bmatrix}1&0\\0&1\end{bmatrix},Z|0\rangle = |0\rangle,Z|1\rangle =-|1\rangle\]
 \\~\\
-\bf{Hadamard \, Gate}
+\subsection{Hadamard Gate}
 \[H|0\rangle = \frac{|0\rangle +|1\rangle}{\sqrt 2}, \quad  H|1\rangle = \frac{|0\rangle -|1\rangle}{\sqrt 2}\]
 \[H(\alpha|0\rangle+\beta|1\rangle)=\alpha\left(\frac{|0\rangle+|1\rangle}{\sqrt 2}\right)+\beta\left(\frac{|0\rangle-|1\rangle}{\sqrt 2}\right)
 =\frac{\alpha+\beta}{\sqrt 2}|0\rangle+\frac{\alpha-\beta}{\sqrt 2}|1\rangle\]
 \[H=\frac{1}{\sqrt 2}\begin{bmatrix}1&1\\1&-1\end{bmatrix},\:H=H^\dagger,\:HH=HH^\dagger=I\]
-\[\Rightarrow HH|0\rangle=|0\rangle,\:HH|1\rangle=|1\rangle,\:HH|\psi\rangle=|\psi\rangle\]
-\[\frac{|0\rangle +|1\rangle}{\sqrt 2} \quad\rule[3pt]{1cm}{0.3pt}\fbox{H}\rule[3pt]{1cm}{0.3pt}\fbox{M})=|0\rangle\]
-\[\frac{|0\rangle -|1\rangle}{\sqrt 2} \quad\rule[3pt]{1cm}{0.3pt}\fbox{H}\rule[3pt]{1cm}{0.3pt}\fbox{M})=|1\rangle\]
+\[\Rightarrow HH|0\rangle=|0\rangle,\:HH|1\rangle=|1\rangle,\:HH|\psi\rangle=|\psi\rangle\] 
+\vspace{0.5em}
+
+\Qcircuit @C=1em @R=2em {&& \frac{\ket{0} + \ket{1}}{\sqrt 2} &&& \gate{H} & \measureD{\mbox{M}} & = & \ket{0}} \vspace{1em}
+\Qcircuit @C=1em @R=2em {&& \frac{\ket{0} - \ket{1}}{\sqrt 2} &&& \gate{H} & \measureD{\mbox{M}} & = & \ket{1}}
+\vspace{1em}
+
+
+\subsection{CNOT Gate}
+\vspace{1em}
+\begin{Large}
+
+\Qcircuit @C=1em @R=1em {
+&& \lstick{\ket{1}} & \ctrl{1} & \rstick{\ket{0}} \qw \\
+&& \lstick{\ket{1}} & \targ & \rstick{\ket{1}} \qw
 \\~\\
-\bf{Rotation}
+}
+\vspace{1em}
+\bf{In general superposition, doesn't seem to modify control bit\\}
+\Qcircuit @C=1em @R=1em {&&&&&&&&&&&&& \alpha\ket{00}+\beta\ket{01}+\gamma\ket{10}+\delta\ket{11}
+\rightarrow \alpha\ket{00}+\beta\ket{01}+\gamma\ket{11}+\delta\ket{10}}
+\vspace{1em}
+
+\bf{But in this specific Hadamard case, seemingly does it\\}
+\Qcircuit @C=1em @R=1em {
+&&& \lstick{\frac{\ket{0} + \ket{1}}{\sqrt 2}} & \ctrl{1} & \qw & \rstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} \qw \\
+&&& \lstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} & \targ & \qw  & \rstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} \qw
+}
+\vspace{1em}
+\end{Large}
+
+\vspace{1em}
+\subsection{Rotation}
 \[R_y(\theta) =\begin{bmatrix}\cos(\theta/2) & -\sin(\theta/2)\\ \sin(\theta/2) & \cos(\theta/2)\end{bmatrix}\]
 \end{document}
