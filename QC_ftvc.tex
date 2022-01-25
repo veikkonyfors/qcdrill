@@ -44,16 +44,44 @@ In this document I am wrapping up the Strangeworks' paced repetition document na
 \[Z=\begin{bmatrix}1&0\\0&1\end{bmatrix},Z|0\rangle = |0\rangle,Z|1\rangle =-|1\rangle\]
 \\~\\
 \subsection{Hadamard Gate}
-\[H|0\rangle = \frac{|0\rangle +|1\rangle}{\sqrt 2}, \quad  H|1\rangle = \frac{|0\rangle -|1\rangle}{\sqrt 2}\]
+\[H|0\rangle = \frac{|0\rangle +|1\rangle}{\sqrt 2}=\begin{bmatrix}\frac{1}{\sqrt 2}\\0\end{bmatrix}+
+\begin{bmatrix}0\\\frac{1}{\sqrt 2}\end{bmatrix}=
+\begin{bmatrix}\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}\end{bmatrix}\]
+\[H|1\rangle = \frac{|0\rangle -|1\rangle}{\sqrt 2}=
+\begin{bmatrix}\frac{1}{\sqrt 2}\\0\end{bmatrix}-
+\begin{bmatrix}0\\\frac{1}{\sqrt 2}\end{bmatrix}=
+\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix}
+\]
+
+
 \[H(\alpha|0\rangle+\beta|1\rangle)=\alpha\left(\frac{|0\rangle+|1\rangle}{\sqrt 2}\right)+\beta\left(\frac{|0\rangle-|1\rangle}{\sqrt 2}\right)
 =\frac{\alpha+\beta}{\sqrt 2}|0\rangle+\frac{\alpha-\beta}{\sqrt 2}|1\rangle\]
 \[H=\frac{1}{\sqrt 2}\begin{bmatrix}1&1\\1&-1\end{bmatrix},\:H=H^\dagger,\:HH=HH^\dagger=I\]
 \[\Rightarrow HH|0\rangle=|0\rangle,\:HH|1\rangle=|1\rangle,\:HH|\psi\rangle=|\psi\rangle\] 
 \vspace{0.5em}
 
+Applying Hadamard to a qubit in Hadamard state, gives back the basis state Hadamard was originally applied to
+
 \Qcircuit @C=1em @R=2em {&& \frac{\ket{0} + \ket{1}}{\sqrt 2} &&& \gate{H} & \measureD{\mbox{M}} & = & \ket{0}} \vspace{1em}
 \Qcircuit @C=1em @R=2em {&& \frac{\ket{0} - \ket{1}}{\sqrt 2} &&& \gate{H} & \measureD{\mbox{M}} & = & \ket{1}}
 \vspace{1em}
+
+Two-qubit state is given by the tensor product, i.e. for below two qubit Hadamard system
+
+$
+|H|0\rangle |H|1\rangle\rangle =
+H|0\rangle \otimes H|1\rangle =
+\begin{bmatrix}\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}\end{bmatrix} \otimes
+\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix} =
+\begin{bmatrix}\frac{1}{\sqrt 2}*\frac{1}{\sqrt 2}\\
+\frac{1}{\sqrt 2}*-\frac{1}{\sqrt 2}\\
+\frac{1}{\sqrt 2}*\frac{1}{\sqrt 2}\\
+\frac{1}{\sqrt 2}*-\frac{1}{\sqrt 2}\end{bmatrix}=
+\begin{bmatrix}\frac{1}{2}\\
+-\frac{1}{2}\\
+\frac{1}{2}\\
+-\frac{1}{2}\end{bmatrix}
+$
 
 
 \subsection{CNOT Gate}
@@ -61,11 +89,18 @@ In this document I am wrapping up the Strangeworks' paced repetition document na
 \begin{Large}
 
 \Qcircuit @C=1em @R=1em {
-&& \lstick{\ket{1}} & \ctrl{1} & \rstick{\ket{0}} \qw \\
-&& \lstick{\ket{1}} & \targ & \rstick{\ket{1}} \qw
+&& \lstick{\ket{1}} & \ctrl{1} & \rstick{\ket{1}} \qw &&&&& \lstick{\ket{1}} & \ctrl{1} & \rstick{\ket{1}} \qw\\
+&& \lstick{\ket{1}} & \targ & \rstick{\ket{0}} \qw &&&&& \lstick{\ket{0}} & \targ & \rstick{\ket{1}} \qw
 \\~\\
 }
 \vspace{1em}
+
+\Qcircuit @C=1em @R=1em {
+&& \lstick{\ket{0}} & \ctrl{1} & \rstick{\ket{0}} \qw &&&&& \lstick{\ket{0}} & \ctrl{1} & \rstick{\ket{0}} \qw\\
+&& \lstick{\ket{1}} & \targ & \rstick{\ket{1}} \qw &&&&& \lstick{\ket{0}} & \targ & \rstick{\ket{0}} \qw
+\\~\\
+}
+
 \bf{In general superposition, doesn't seem to modify control bit\\}
 \Qcircuit @C=1em @R=1em {&&&&&&&&&&&&& \alpha\ket{00}+\beta\ket{01}+\gamma\ket{10}+\delta\ket{11}
 \rightarrow \alpha\ket{00}+\beta\ket{01}+\gamma\ket{11}+\delta\ket{10}}
@@ -77,6 +112,8 @@ In this document I am wrapping up the Strangeworks' paced repetition document na
 &&& \lstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} & \targ & \qw  & \rstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} \qw
 }
 \vspace{1em}
+
+\[\frac{1}{\sqrt 2}\begin{bmatrix}0\\1\end{bmatrix}\]
 \end{Large}
 
 \vspace{1em}
