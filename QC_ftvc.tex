@@ -15,10 +15,18 @@
 \begin{document}
 \maketitle
 
-In this document I am wrapping up the Strangeworks' paced repetition document named 'Quantum computing for the very curious'
+\paragraph{In this document I was originally to wrap up the Strangeworks' paced repetition document named 'Quantum computing for the very curious'.
+Eventually ended up on wrapping also information available in Qiskit's and Azure's documentation.
+Items incorporated are ones that I felt needing as available supplementary material along the road.
+Exspecially on the first few hundred meters, where composing this document was a very good practical excersize to learn the stuff as well.
+\\
+Hopefully this document is helpfull fo other people as well. 
+}
+
+
 \newpage
 
-\section{Matrix fundamentals relating to base states}
+\section{Beneficial matrix fundamentals}
 
 \bf{Dirac notation}
 \[|0\rangle=\begin{bmatrix} 1\\0\end{bmatrix}=e_0,\:
@@ -81,23 +89,6 @@ Applying Hadamard to a qubit in Hadamard state, gives back the basis state Hadam
 \Qcircuit @C=1em @R=2em {&& \frac{\ket{0} - \ket{1}}{\sqrt 2} &&& \gate{H} & \measureD{\mbox{M}} & = & \ket{1}}
 \vspace{1em}
 
-Two-qubit state is given by the tensor product, i.e. for below two qubit Hadamard system
-
-$
-|H|0\rangle |H|1\rangle\rangle =
-H|0\rangle \otimes H|1\rangle =
-\begin{bmatrix}\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}\end{bmatrix} \otimes
-\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix} =
-\begin{bmatrix}\frac{1}{\sqrt 2}*\frac{1}{\sqrt 2}\\
-\frac{1}{\sqrt 2}*-\frac{1}{\sqrt 2}\\
-\frac{1}{\sqrt 2}*\frac{1}{\sqrt 2}\\
-\frac{1}{\sqrt 2}*-\frac{1}{\sqrt 2}\end{bmatrix}=
-\begin{bmatrix}\frac{1}{2}\\
--\frac{1}{2}\\
-\frac{1}{2}\\
--\frac{1}{2}\end{bmatrix}
-$
-
 
 \subsection{CNOT Gate}
 \vspace{1em}
@@ -128,10 +119,61 @@ $
 }
 \vspace{1em}
 
-\[\frac{1}{\sqrt 2}\begin{bmatrix}0\\1\end{bmatrix}\]
 \end{Large}
 
 \vspace{1em}
 \subsection{Rotation}
 \[R_y(\theta) =\begin{bmatrix}\cos(\theta/2) & -\sin(\theta/2)\\ \sin(\theta/2) & \cos(\theta/2)\end{bmatrix}\]
+
+\newpage
+\section{Multiple qubits}
+
+Two-qubit state is given by the tensor (or Kronecker) product
+
+$|0\rangle \otimes |1\rangle=
+\begin{bmatrix}1\\0 \end{bmatrix}\otimes
+\begin{bmatrix}0\\1 \end{bmatrix}=
+\begin{bmatrix}1\begin{bmatrix}0\\1 \end{bmatrix}\\0\begin{bmatrix}0\\1 \end{bmatrix}\end{bmatrix}=
+\begin{bmatrix}0\\1\\0\\0 \end{bmatrix}
+\\~\\$
+
+$H\otimes H = 
+\frac{1}{\sqrt 2}\begin{bmatrix}1&1\\1&-1\end{bmatrix}\otimes
+\frac{1}{\sqrt 2}\begin{bmatrix}1&1\\1&-1\end{bmatrix} =
+\begin{bmatrix}\frac{1}{\sqrt 2}&\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}&-\frac{1}{\sqrt 2}\end{bmatrix}\otimes
+\begin{bmatrix}\frac{1}{\sqrt 2}&\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}&-\frac{1}{\sqrt 2}\end{bmatrix}=
+\\~\\
+\begin{bmatrix}\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}&\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}&-\frac{1}{\sqrt 2}\end{bmatrix}&\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}&\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}&-\frac{1}{\sqrt 2}\end{bmatrix}\\\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}&\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}&-\frac{1}{\sqrt 2}\end{bmatrix}&-\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}&\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}&-\frac{1}{\sqrt 2}\end{bmatrix}\end{bmatrix}=
+\begin{bmatrix}
+\frac{1}{2}&\frac{1}{2}&\frac{1}{2}&\frac{1}{2}\\
+\frac{1}{2}&-\frac{1}{2}&\frac{1}{2}&-\frac{1}{2}\\
+\frac{1}{2}&\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}\\
+\frac{1}{2}&-\frac{1}{2}&-\frac{1}{2}&\frac{1}{2}\\
+\end{bmatrix}
+\\~\\$
+
+E.g. for below two qubit Hadamard system
+
+$|H|0\rangle |H|1\rangle\rangle =
+H|0\rangle \otimes H|1\rangle =
+\begin{bmatrix}\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}\end{bmatrix} \otimes
+\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix} =
+\begin{bmatrix}\frac{1}{\sqrt 2}*\frac{1}{\sqrt 2}\\
+\frac{1}{\sqrt 2}*-\frac{1}{\sqrt 2}\\
+\frac{1}{\sqrt 2}*\frac{1}{\sqrt 2}\\
+\frac{1}{\sqrt 2}*-\frac{1}{\sqrt 2}\end{bmatrix}=
+\begin{bmatrix}\frac{1}{2}\\
+-\frac{1}{2}\\
+\frac{1}{2}\\
+-\frac{1}{2}\end{bmatrix}
+\\~\\$
+
+In other words
+
+$H\otimes H(|01\rangle) =
+H^{\otimes 2} \left( \begin{bmatrix}1 \\ 0 \end{bmatrix}\otimes \begin{bmatrix}0\\1 \end{bmatrix} \right) =
+\frac{1}{2}\begin{bmatrix}1 &1 &1 &1 \\ 1 &-1 &1 &-1 \\ 1 &1 &-1 &-1 \\ 1 &-1 &-1 &1 \end{bmatrix}\begin{bmatrix}0\\ 1\\ 0\\ 0\end{bmatrix} =
+\frac{1}{2}\begin{bmatrix}1\\ -1\\ 1\\ -1\end{bmatrix}$
+
+
 \end{document}
