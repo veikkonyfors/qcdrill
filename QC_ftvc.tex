@@ -142,14 +142,15 @@ CNOT=\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0\\\end{bmatrix}
 \vspace{1em}
 
 \bf{But in this specific Hadamard case, seemingly does it\\}\\~\\
+\bf{A sample of CNOT changing the control qubit\\}\\~\\
 \Qcircuit @C=1em @R=1em {
 &&& \lstick{\frac{\ket{0} + \ket{1}}{\sqrt 2}} & \ctrl{1} & \qw & \rstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} \qw \\
 &&& \lstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} & \targ & \qw  & \rstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} \qw
 }
 \\~\\or\\\
 \Qcircuit @C=1em @R=1em {
-&&& \ket{+} && \ctrl{1} & \qw && \ket{-} \\
-&&& \ket{-} && \targ{1} & \qw && \ket{-}
+& \ket{+} && \ctrl{1} & \qw && \ket{-} \\
+& \ket{-} && \targ{1} & \qw && \ket{-}
 }
 \vspace{1em}
 
@@ -170,6 +171,7 @@ $\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0\\\end{bmatrix}
 \\-\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2} \end{bmatrix}\end{bmatrix}=\\~\\
 \begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix}\otimes
 \begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix}=
+|-\rangle \otimes |-\rangle=
 |--\rangle$
 
 \\~\\\\~\\
