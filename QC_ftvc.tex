@@ -17,10 +17,11 @@
 
 \paragraph{In this document I was originally to wrap up the Strangeworks' paced repetition document named 'Quantum computing for the very curious'.
 Eventually ended up on wrapping also information available in Qiskit's and Azure's documentation.
-Items incorporated are ones that I felt needing as available supplementary material along the road.
-Exspecially on the first few hundred meters, where composing this document was a very good practical excersize to learn the stuff as well.
+Items incorporated are ones that I felt I was going to need as available supplementary material along the road.
+Exspecially on the first few hundred meters, where composing this document was a very good practical excersize to learn the stuff too.
+Kind of killing two birds with one stone.
 \\
-Hopefully this document is helpfull fo other people as well. 
+Hopefully this document is helpfull fo other people as well. Third bird? :-)
 }
 
 
@@ -43,14 +44,38 @@ Hopefully this document is helpfull fo other people as well.
 \\~\\
 \bf{Tensor product\\}
 
-$|0\rangle \otimes |1\rangle=
+$|00\rangle=|0\rangle \otimes |0\rangle=
+\begin{bmatrix}1\\0 \end{bmatrix}\otimes
+\begin{bmatrix}1\\0 \end{bmatrix}=
+\begin{bmatrix}1\begin{bmatrix}1\\0 \end{bmatrix}\\0\begin{bmatrix}1\\0 \end{bmatrix}\end{bmatrix}=
+\begin{bmatrix}1\\0\\0\\0 \end{bmatrix}$
+\\~\\
+
+$|01\rangle=|0\rangle \otimes |1\rangle=
 \begin{bmatrix}1\\0 \end{bmatrix}\otimes
 \begin{bmatrix}0\\1 \end{bmatrix}=
 \begin{bmatrix}1\begin{bmatrix}0\\1 \end{bmatrix}\\0\begin{bmatrix}0\\1 \end{bmatrix}\end{bmatrix}=
 \begin{bmatrix}0\\1\\0\\0 \end{bmatrix}$
 \\~\\
 
-$\begin{bmatrix}1&1\\1&-1\end{bmatrix}\otimes
+$|10\rangle=|1\rangle \otimes |0\rangle=
+\begin{bmatrix}0\\1 \end{bmatrix}\otimes\begin{bmatrix}1\\0 \end{bmatrix}=
+\begin{bmatrix}0\begin{bmatrix}1\\0 \end{bmatrix}\\1\begin{bmatrix}1\\0 \end{bmatrix}\end{bmatrix}=
+\begin{bmatrix}0\\0\\1\\0 \end{bmatrix}$
+\\~\\
+
+$|11\rangle=|1\rangle \otimes |1\rangle=
+\begin{bmatrix}0\\1 \end{bmatrix}\otimes\begin{bmatrix}0\\1 \end{bmatrix}=
+\begin{bmatrix}0\begin{bmatrix}0\\1 \end{bmatrix}\\1\begin{bmatrix}0\\1 \end{bmatrix}\end{bmatrix}=
+\begin{bmatrix}0\\0\\0\\1 \end{bmatrix}$
+\\~\\
+
+
+
+
+
+
+$\sqrt{2}*H\otimes \sqrt{2}*H = \begin{bmatrix}1&1\\1&-1\end{bmatrix}\otimes
 \begin{bmatrix}1&1\\1&-1\end{bmatrix} =
 \begin{bmatrix}1\begin{bmatrix}1&1\\1&-1\end{bmatrix}&1\begin{bmatrix}1&1\\1&-1\end{bmatrix}\\1\begin{bmatrix}1&1\\1&-1\end{bmatrix}&-1\begin{bmatrix}1&1\\1&-1\end{bmatrix}\end{bmatrix}=
 \begin{bmatrix}1&1&1&1\\1&-1&1&-1\\1&1&-1&-1\\1&-1&-1&1\\\end{bmatrix}
@@ -84,7 +109,7 @@ $\begin{bmatrix}1&1\\1&-1\end{bmatrix}\otimes
 \vspace{0.5em}
 
 Applying Hadamard to a qubit in Hadamard state, gives back the basis state Hadamard was originally applied to
-
+\\~\\
 \Qcircuit @C=1em @R=2em {&& \frac{\ket{0} + \ket{1}}{\sqrt 2} &&& \gate{H} & \measureD{\mbox{M}} & = & \ket{0}} \vspace{1em}
 \Qcircuit @C=1em @R=2em {&& \frac{\ket{0} - \ket{1}}{\sqrt 2} &&& \gate{H} & \measureD{\mbox{M}} & = & \ket{1}}
 \vspace{1em}
@@ -107,17 +132,78 @@ Applying Hadamard to a qubit in Hadamard state, gives back the basis state Hadam
 \\~\\
 }
 
+$
+CNOT=\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0\\\end{bmatrix}
+\\~\\$
+
 \bf{In general superposition, doesn't seem to modify control bit\\}
 \Qcircuit @C=1em @R=1em {&&&&&&&&&&&&& \alpha\ket{00}+\beta\ket{01}+\gamma\ket{10}+\delta\ket{11}
 \rightarrow \alpha\ket{00}+\beta\ket{01}+\gamma\ket{11}+\delta\ket{10}}
 \vspace{1em}
 
-\bf{But in this specific Hadamard case, seemingly does it\\}
+\bf{But in this specific Hadamard case, seemingly does it\\}\\~\\
 \Qcircuit @C=1em @R=1em {
 &&& \lstick{\frac{\ket{0} + \ket{1}}{\sqrt 2}} & \ctrl{1} & \qw & \rstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} \qw \\
 &&& \lstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} & \targ & \qw  & \rstick{\frac{\ket{0} - \ket{1}}{\sqrt 2}} \qw
 }
+\\~\\or\\\
+\Qcircuit @C=1em @R=1em {
+&&& \ket{+} && \ctrl{1} & \qw && \ket{-} \\
+&&& \ket{-} && \targ{1} & \qw && \ket{-}
+}
 \vspace{1em}
+
+\\~\\ Proof
+$\\~\\\begin{bmatrix}\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2}\end{bmatrix}\otimes
+\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix}=
+\begin{bmatrix}\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2} \end{bmatrix}
+\\\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2} \end{bmatrix}\end{bmatrix}=
+\begin{bmatrix}1/2\\-1/2\\1/2\\-1/2 \end{bmatrix}
+$
+
+\\~\\
+Apply CNOT on this\\~\\
+$\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0\\\end{bmatrix}
+\begin{bmatrix}1/2\\-1/2\\1/2\\-1/2 \end{bmatrix}=
+\begin{bmatrix}1/2\\-1/2\\-1/2\\1/2 \end{bmatrix}=
+\begin{bmatrix}\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2} \end{bmatrix}
+\\-\frac{1}{\sqrt 2}\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2} \end{bmatrix}\end{bmatrix}=\\~\\
+\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix}\otimes
+\begin{bmatrix}\frac{1}{\sqrt 2}\\-\frac{1}{\sqrt 2}\end{bmatrix}=
+|--\rangle$
+
+\\~\\\\~\\
+Another drill
+\\~\\\\~\\
+\Qcircuit @C=1em @R=1em {
+& \ket{0} && \gate{H} \qw & \ctrl{1} & \qw & \gate{H} & \qw \\
+& \ket{0} && \qw & \targ{1} & \qw & \qw & \qw
+}
+\\~\\\\~\\
+
+$|\psi\rangle_{init} = |0\rangle \otimes |0\rangle = |00\rangle\\~\\$
+
+Apply Hadamard on first qubit\\~\\
+$|\psi\rangle_{0} = \frac{|0\rangle +|1\rangle}{\sqrt 2}\otimes |0\rangle=
+\frac{1}{\sqrt 2}\left(\begin{bmatrix}1\\0 \end{bmatrix}+\begin{bmatrix}0\\1 \end{bmatrix}\right)\otimes |0\rangle=\\~\\
+\frac{1}{\sqrt 2}\left(\begin{bmatrix}1\\1 \end{bmatrix}\right)\otimes|0\rangle=
+\begin{bmatrix}\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 2} \end{bmatrix}\otimes \begin{bmatrix}1\\0 \end{bmatrix}=
+\begin{bmatrix}\frac{1}{\sqrt 2}\begin{bmatrix}1\\0 \end{bmatrix}\\\frac{1}{\sqrt 2}\begin{bmatrix}1\\0 \end{bmatrix}\end{bmatrix}=
+\frac{1}{\sqrt 2}\begin{bmatrix}1\\0\\1\\0 \end{bmatrix}=
+\frac{1}{\sqrt 2}\left(\begin{bmatrix}1\\0\\0\\0 \end{bmatrix}+
+\begin{bmatrix}0\\0\\1\\0 \end{bmatrix}\right)=
+\frac{1}{\sqrt 2}\left(\begin{bmatrix}1\\0\\0\\0 \end{bmatrix}+
+\begin{bmatrix}0\\0\\1\\0 \end{bmatrix}\right)=
+\frac{1}{\sqrt 2}\left(|00\rangle+|10\rangle\right)=
+\frac{|00\rangle+|10\rangle}{\sqrt 2}\\~\\
+$
+
+Apply CNOT on the above result\\~\\
+$\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0\\\end{bmatrix} \frac{1}{\sqrt 2}\begin{bmatrix}1\\0\\1\\0 \end{bmatrix} =
+\frac{1}{\sqrt 2}\begin{bmatrix}1\\0\\0\\1 \end{bmatrix}=
+\frac{1}{\sqrt 2}\left(\begin{bmatrix}1\\0\\0\\0 \end{bmatrix}+
+\begin{bmatrix}0\\0\\0\\1 \end{bmatrix}\right)=
+\frac{1}{\sqrt 2}\left(|00\rangle+|11\rangle\right)$
 
 \end{Large}
 
