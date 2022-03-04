@@ -70,16 +70,23 @@ $|11\rangle=|1\rangle \otimes |1\rangle=
 \begin{bmatrix}0\\0\\0\\1 \end{bmatrix}$
 \\~\\
 
-
-
-
-
-
 $\sqrt{2}*H\otimes \sqrt{2}*H = \begin{bmatrix}1&1\\1&-1\end{bmatrix}\otimes
 \begin{bmatrix}1&1\\1&-1\end{bmatrix} =
 \begin{bmatrix}1\begin{bmatrix}1&1\\1&-1\end{bmatrix}&1\begin{bmatrix}1&1\\1&-1\end{bmatrix}\\1\begin{bmatrix}1&1\\1&-1\end{bmatrix}&-1\begin{bmatrix}1&1\\1&-1\end{bmatrix}\end{bmatrix}=
 \begin{bmatrix}1&1&1&1\\1&-1&1&-1\\1&1&-1&-1\\1&-1&-1&1\\\end{bmatrix}
 \\~\\$
+
+
+\bf{Density operator\\}
+
+$
+for \hspace{0.5em} |\psi \rangle = \begin{bmatrix} a_0 \\ a_1 \\a_3 \\ a_4 \end{bmatrix}, \hspace{0.5em}
+Density \hspace{0.5em} operator \hspace{0.5em} \rho \equiv  | \psi \rangle \langle \psi | \hspace{0.5em} (\sim Outer \hspace{0.5em} product)=\\
+\begin{bmatrix} a_0 \\ a_1 \\a_2 \\ a_3 \end{bmatrix} \begin{bmatrix} a_0^* & a_1^* & a_2^* & a_3^* \end{bmatrix} =
+\begin{bmatrix} |a_0|^2 & a_0  a_1^*& a_0  a_2^*  & a_0  a_3^*  \\ a_1  a_0^*& |a_1|^2 & a_1  a_2^*  & a_1  a_3^* \\ 
+a_2  a_0^*& a_2  a_1^*  & |a_2|^2 & a_2  a_3^* \\ a_3  a_0^*& a_3  a_1^*& a_3  a_2^*  & |a_3|^2 \end{bmatrix}
+$
+
 
 \section{Gates}
 \subsection{Pauli gates: X(/NOT), Y and Z}
@@ -262,6 +269,29 @@ $H\otimes H(|01\rangle) =
 H^{\otimes 2} \left( \begin{bmatrix}1 \\ 0 \end{bmatrix}\otimes \begin{bmatrix}0\\1 \end{bmatrix} \right) =
 \frac{1}{2}\begin{bmatrix}1 &1 &1 &1 \\ 1 &-1 &1 &-1 \\ 1 &1 &-1 &-1 \\ 1 &-1 &-1 &1 \end{bmatrix}\begin{bmatrix}0\\ 1\\ 0\\ 0\end{bmatrix} =
 \frac{1}{2}\begin{bmatrix}1\\ -1\\ 1\\ -1\end{bmatrix}$
+
+\pagebreak
+\section{Entanglement}
+
+\bf{A pure two qubit system's state is expressed as tensor product of each qubit's state vector. If we have a two qubit system, whose state is not possible to express
+as a tensor product of two such subvectors, the state is entangled. I.e. state has to be factorizable (or separable) in tensorproduct sense for the state to be unentangled.
+\\~\\}
+\Qcircuit @C=1em @R=1em {&&&&&& a\ket{00}+b\ket{01}+c\ket{10}+d\ket{11}}
+
+\vspace{1em}
+
+\bf{If above general superposition is separable, then it should be possible to represent it as\\~\\}
+$(\alpha\ket{0}+\beta\ket{1})\otimes(\gamma\ket{0}+\delta\ket{1})=
+\left(\begin{bmatrix}\alpha \\ 0 \end{bmatrix}+\begin{bmatrix}0 \\ \beta \end{bmatrix}\right)\otimes\left(\begin{bmatrix}\gamma \\ 0 \end{bmatrix}+\begin{bmatrix}0 \\ \delta \end{bmatrix}\right)=\\~\\
+\begin{bmatrix}\alpha\\\beta \end{bmatrix}\otimes\begin{bmatrix}\gamma\\\delta \end{bmatrix}=
+\begin{bmatrix}\alpha\begin{bmatrix}\gamma\\\delta \end{bmatrix}\\\beta\begin{bmatrix}\gamma\\\delta \end{bmatrix}\end{bmatrix}=
+\begin{bmatrix}\alpha\gamma\\\alpha\delta\\\beta\gamma\\\beta\delta \end{bmatrix}=
+(\alpha\gamma|00\rangle+\alpha\delta|01\rangle+\beta\gamma|10\rangle+\beta\delta|11\rangle)
+\\~\\$
+
+This is the same as out initial pure state if and only if
+$\\~\\\alpha\gamma=a\land\alpha\delta=b\land\beta\gamma=c\land\beta\delta=d \Leftrightarrow ad=bc \Leftrightarrow ad-bc=0
+$
 
 
 \end{document}
